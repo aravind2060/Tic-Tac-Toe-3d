@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>3D TIC TAC TOE</h1>
+            <div id="status-label">Your Turn (X) - Click on a cell to place X</div>
+            <div class="controls-help">🎮 CONTROLS: Click+drag to rotate | Scroll to zoom | Click for game move | SPACEBAR to reset view</div>
+        </div>
+        
+        <div class="control-panel">
+            <div class="spacing-control">
+                <label for="layer-spacing">Layer Spacing:</label>
+                <input type="range" id="layer-spacing" min="1.0" max="3.0" step="0.1" value="1.8">
+            </div>
+            
+            <div class="layer-visibility">
+                <div class="layer-checkbox">
+                    <input type="checkbox" id="layer0" checked>
+                    <label for="layer0">Layer 1</label>
+                </div>
+                <div class="layer-checkbox">
+                    <input type="checkbox" id="layer1" checked>
+                    <label for="layer1">Layer 2</label>
+                </div>
+                <div class="layer-checkbox">
+                    <input type="checkbox" id="layer2" checked>
+                    <label for="layer2">Layer 3</label>
+                </div>
+                <div class="layer-checkbox">
+                    <input type="checkbox" id="layer3" checked>
+                    <label for="layer3">Layer 4</label>
+                </div>
+            </div>
+            
+            <div class="game-controls">
+                <button id="restart-game">🔄 Restart Game</button>
+                <button id="reset-view">🔍 Reset View</button>
+                
+                <div class="mode-toggle">
+                    <span>Game Mode:</span>
+                    <div class="radio-group">
+                        <input type="radio" id="navigate-mode" name="game-mode">
+                        <label for="navigate-mode">Navigate</label>
+                        
+                        <input type="radio" id="play-mode" name="game-mode" checked>
+                        <label for="play-mode">Play</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="game-container"></div>
+        
+        <div id="difficulty-modal" class="modal">
+            <div class="modal-content">
+                <h2>Choose Difficulty</h2>
+                <div class="difficulty-buttons">
+                    <button data-difficulty="easy">Easy</button>
+                    <button data-difficulty="medium">Medium</button>
+                    <button data-difficulty="hard">Hard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/renderer.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
