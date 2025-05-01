@@ -4,24 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Tic-Tac-Toe</title>
+    <!-- Link to stylesheet for UI appearance -->
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Three.js library for 3D rendering -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
+    <!-- Main container for the entire application -->
     <div class="container">
+        <!-- Header section with title and instructions -->
         <div class="header">
             <h1>3D TIC TAC TOE</h1>
+            <!-- Status display that updates during gameplay -->
             <div id="status-label">Your Turn (X) - Click on a cell to place X</div>
+            <!-- Controls help text -->
             <div class="controls-help">🎮 CONTROLS: Click+drag to rotate | Scroll to zoom | Click for game move | SPACEBAR to reset view</div>
         </div>
         
+        <!-- Control panel for game settings and controls -->
         <div class="control-panel">
+            <!-- Layer spacing control slider -->
             <div class="spacing-control">
                 <label for="layer-spacing">Layer Spacing:</label>
+                <!-- Range slider to control distance between the 4 z-axis layers -->
                 <input type="range" id="layer-spacing" min="1.0" max="3.0" step="0.1" value="1.8">
             </div>
             
+            <!-- Layer visibility toggles -->
             <div class="layer-visibility">
+                <!-- Checkboxes to show/hide individual layers -->
                 <div class="layer-checkbox">
                     <input type="checkbox" id="layer0" checked>
                     <label for="layer0">Layer 1</label>
@@ -40,16 +51,22 @@
                 </div>
             </div>
             
+            <!-- Game control buttons and mode selection -->
             <div class="game-controls">
+                <!-- Restart button - resets the game state -->
                 <button id="restart-game">🔄 Restart Game</button>
+                <!-- Reset view button - resets camera position -->
                 <button id="reset-view">🔍 Reset View</button>
                 
+                <!-- Mode toggle between navigation and gameplay -->
                 <div class="mode-toggle">
                     <span>Game Mode:</span>
                     <div class="radio-group">
+                        <!-- Navigation mode - for rotating and zooming only -->
                         <input type="radio" id="navigate-mode" name="game-mode">
                         <label for="navigate-mode">Navigate</label>
                         
+                        <!-- Play mode - for making game moves -->
                         <input type="radio" id="play-mode" name="game-mode" checked>
                         <label for="play-mode">Play</label>
                     </div>
@@ -57,12 +74,15 @@
             </div>
         </div>
         
+        <!-- Main game container where Three.js will render the 3D board -->
         <div id="game-container"></div>
         
+        <!-- Difficulty selection modal shown at game start -->
         <div id="difficulty-modal" class="modal">
             <div class="modal-content">
                 <h2>Choose Difficulty</h2>
                 <div class="difficulty-buttons">
+                    <!-- Difficulty buttons with data attributes for AI settings -->
                     <button data-difficulty="easy">Easy</button>
                     <button data-difficulty="medium">Medium</button>
                     <button data-difficulty="hard">Hard</button>
@@ -71,8 +91,12 @@
         </div>
     </div>
     
+    <!-- Script loading order matters: renderer -> AI -> game controller -->
+    <!-- 1. Renderer handles 3D visualization -->
     <script src="js/renderer.js"></script>
+    <!-- 2. AI handles game intelligence and decision making -->
     <script src="js/ai.js"></script>
+    <!-- 3. Game controller coordinates game flow and user interaction -->
     <script src="js/game.js"></script>
 </body>
 </html>
